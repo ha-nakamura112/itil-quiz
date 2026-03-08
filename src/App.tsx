@@ -3,20 +3,21 @@ import { QuizView } from "./quiz/QuizView";
 import { ResultView } from "./quiz/RsView";
 import { btnHeader } from "./quiz/ui";
 import { ContactButton } from "./quiz/ContactBtn";
+import AdBanner from "./components/AdBanner";
 
 export default function App() {
   const { data, state, current, stats, error, actions } = useQuiz("/json/questions.json");
 
   const Shell = ({ children }: { children: React.ReactNode }) => (
     <div className="min-h-screen bg-[#F4F6F9] text-[#1a1d23]">
-      <div className="mx-auto max-w-[700px] px-7 pt-24 pb-20">
+      <div className="mx-auto max-w-[700px] px-7 pt-16 pb-20">
         {children}
       </div>
     </div>
   );
 
   const Header = ({ modeLabel }: { modeLabel?: string }) => (
-    <div className="mb-11 flex items-center justify-between gap-6">
+    <div className="mb-7 flex items-center justify-between gap-6">
       {/* タイトルのみ・サブテキストなし */}
       <h1 className="text-[30px] font-extrabold tracking-tight text-[#1a1d23]">
         ITIL4 Foundation
@@ -100,6 +101,12 @@ export default function App() {
           disablePrimary={!current.judged && current.selected === null}
         />
       )}
+        {/* 広告②：ページ下部 */}
+        <AdBanner
+          adClient="ca-pub-xxxxxxxxxx"
+          adSlot="2222222222"
+          style={{ margin: "40px 0" }}
+        />
       <ContactButton />
     </Shell>
   );
